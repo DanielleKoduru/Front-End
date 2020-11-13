@@ -100,8 +100,8 @@ export default function Form(props) {
                     Number of Guests:&nbsp;
                     <input
                         name="numberOfGuests"
-                        type="checkbox"
-                        onChange={onCheckboxChange}
+                        type="text"
+                        onChange={onInputChange}
                         checked={values.name}
                     />
                 </label>
