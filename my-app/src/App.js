@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import formSchema from './formSchema';
 
 const initialFormValues = {
+  eventName: '',
   date: '',
   time: '',
   location: '',
@@ -17,9 +18,13 @@ const initialFormValues = {
 };
 
 const initialFormErrors = {
+  eventName: '',
   date: '',
   time: '',
   location: '',
+  foodList: '',
+  isGoing: false,
+  numberOfGuests: '',
 }
 
 const initialDisabled = true;
@@ -86,6 +91,7 @@ const App = () => {
     event.preventDefault();
 
     const potluck = {
+      eventName: formValues.eventName.trim(),
       date: formValues.date.trim(),
       time: formValues.time.trim(),
       location: formValues.location.trim(),
@@ -104,42 +110,46 @@ const App = () => {
 
 
   return (
-    <nav>
-      <h1>Potluck Planner</h1>
-      <div className="nav">
-        <Link to="/" id="home"> Home </Link>
-        <Link to="/Guest" id="guest page"> My Potluck's </Link>
-      </div>
-    </nav>
-
-    <Switch>
-      <Route path="/Guest">
-        <h1> Upcoming Potluck's </h1>
-      </Route>
-    </>
-
-
-    <Route path="/Form">
-      <h1>Create A New Potluck</h1>
-      <Form
-        onInputChange={onInputChange}
-        onSubmit={onSubmit}
-        onCheckboxChange={onCheckboxChange}
-        disabled={disabled}
-        errors={formErrors}
-        values={formValues}
-      />
-      {currentPotluck.map((potluck, index) => {
-        return <div key={index} >
-          <h2>{potluck.date}</h2>
-          <p>{potluck.time}</p>
-          <p>{potluck.location}</p>
-          <p>{potluck.numberOfGuests}</p>
+    <>
+      <nav>
+        <h1>Potluck Planner</h1>
+        <div className="nav">
+          <Link to="/" id="home"> Home </Link>
+          <Link to="/Form" id="form"> Organizer </Link>
+          <Link to="/Guest" id="guest"> Guest </Link>
         </div>
-      })}
-    </Route>
-    <Route path="/Form">
-    </Route>
+      </nav>
+
+      <Switch>
+        <Route path="/Guest">
+          <h1> Upcoming Potluck's </h1>
+        </Route>
+
+
+        <Route path="/Form">
+          <h1>Create A New Potluck</h1>
+          <Form
+            onInputChange={onInputChange}
+            onSubmit={onSubmit}
+            onCheckboxChange={onCheckboxChange}
+            disabled={disabled}
+            errors={formErrors}
+            values={formValues}
+          />
+          {currentPotluck.map((potluck, index) => {
+            return <div key={index} >
+              <h2>{potluck.name}</h2>
+              <p>{potluck.date}</p>
+              <p>{potluck.time}</p>
+              <p>{potluck.location}</p>
+              <p>{potluck.numberOfGuests}</p>
+            </div>
+          })}
+        </Route>
+        <Route path="/Form">
+        </Route>
+      </Switch>
+    </>
   );
 };
 
