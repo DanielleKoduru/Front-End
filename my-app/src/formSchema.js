@@ -11,7 +11,7 @@ const formSchema = yup.object().shape({
     location: yup.string(),
     foodList: yup.string(),
     isGoing: yup.string(),
-    numberOfGuests: yup.string(),
+    numberOfGuests: yup.string().required('You must choose a number of guests'),
 });
 
 export default formSchema;
