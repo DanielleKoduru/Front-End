@@ -91,13 +91,13 @@ const App = () => {
     event.preventDefault();
 
     const potluck = {
-      eventName: formValues.eventName.trim(),
-      date: formValues.date.trim(),
-      time: formValues.time.trim(),
-      location: formValues.location.trim(),
-      foodlist: formValues.foodList.trim(),
+      eventName: formValues.eventName,
+      date: formValues.date,
+      time: formValues.time,
+      location: formValues.location,
+      foodlist: formValues.foodList,
       isGoing: formValues.isGoing,
-      numberOfGuests: formValues.guests.trim(),
+      numberOfGuests: formValues.guests,
     };
     postPotluck(potluck);
   };
