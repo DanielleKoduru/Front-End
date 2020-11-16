@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
-import loginSchema from './loginSchema';
+import signUpSchema from './signUpSchema';
 
-const initialLoginValues = {
+const initialSignUpValues = {
+    username: '',
     email: '',
     password: '',
 };
 
-const initialLoginErrors = {
+const initialSignUpErrors = {
+    username: '',
     email: '',
     password: '',
 }
@@ -17,9 +19,9 @@ const initialUsers = []
 const initialDisabled = true
 
 
-const LoginForm = () => {
-    const [loginValues, setLoginValues] = useState(initialLoginValues);
-    const [loginErrors, setLoginErrors] = useState(initialLoginErrors);
+const SignUp = () => {
+    const [signUpValues, setSignUpValues] = useState(initialSignUpValues);
+    const [signUpErrors, setSignUpErrors] = useState(initialSignUpErrors);
     const [disabledLogin, setDisabledLogin] = useState(initialDisabled);
     const [users, setUsers] = useState(initialUsers);
 
@@ -37,33 +39,35 @@ const LoginForm = () => {
 
     const validate = (name, value) => {
         yup
-            .reach(loginSchema, name)
+            .reach(signUpSchema, name)
             .validate(value)
             .then((valid) => {
-                setLoginErrors({
-                    ...loginErrors,
+                setSignUpErrors({
+                    ...signUpErrors,
                     [name]: '',
                 });
             })
             .catch((error) => {
-                setLoginErrors({
-                    ...loginErrors,
+                setSignUpErrors({
+                    ...signUpErrors,
                     [name]: error.errors[0],
                 });
             });
-
     }
+
+
     const onInputChange = (event) => {
         const { name, value } = event.target;
         change(name, value);
     }
     const change = (name, value) => {
         validate(name, value)
-        setLoginValues({
-            ...loginValues,
+        setSignUpValues({
+            ...signUpValues,
             [name]: value
         })
     }
+
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -72,42 +76,52 @@ const LoginForm = () => {
 
     const submit = () => {
         const newUser = {
-            email: loginValues.email.trim(),
-            password: loginValues.password.trim()
+            username: signUpValues.username.trim(),
+            email: signUpValues.email.trim(),
+            password: signUpValues.password.trim()
         }
         postNewUsers(newUser)
     }
 
 
     useEffect(() => {
-        loginSchema.isValid(loginValues)
+        signUpSchema.isValid(signUpValues)
             .then(valid => {
                 setDisabledLogin(!valid)
             })
-    }, [loginValues])
+    }, [signUpValues])
 
 
 
     return (
         <form onSubmit={onSubmit}>
-            <h1>Login</h1>
+            <h1>Login Form</h1>
 
             <div>
-                <div>{loginErrors.username}</div>
-                <div>{loginErrors.password}</div>
+                <div>{signUpErrors.username}</div>
+                <div>{signUpErrors.email}</div>
+                <div>{signUpErrors.password}</div>
             </div>
 
             <label>Username:  </label>
             <input
-                value={loginValues.username}
+                value={signUpValues.username}
                 onInputChange={onInputChange}
                 name='username'
                 type='username'
             />
 
+            <label>Email:  </label>
+            <input
+                value={signUpValues.email}
+                onInputChange={onInputChange}
+                name='email'
+                type='email'
+            />
+
             <label>Password:  </label>
             <input
-                value={loginValues.password}
+                value={signUpValues.password}
                 onInputChange={onInputChange}
                 name='password'
                 type='password'
@@ -118,6 +132,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm;
-
-
+export default SignUp;

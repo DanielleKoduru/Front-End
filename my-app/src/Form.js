@@ -72,19 +72,6 @@ export default function Form() {
         });
     };
 
-    const onCheckboxChange = (event) => {
-        const { name } = event.target;
-        const { checked } = event.target;
-
-        setFormValues({
-            ...formValues,
-            isGoing: {
-                ...formValues.isGoing,
-                [name]: checked,
-            },
-        });
-    };
-
     const onSubmit = (event) => {
         event.preventDefault();
 
@@ -94,8 +81,6 @@ export default function Form() {
             time: formValues.time,
             location: formValues.location,
             foodlist: formValues.foodList,
-            isGoing: formValues.isGoing,
-            numberOfGuests: formValues.guests,
         };
         postPotluck(potluck);
     };
@@ -168,45 +153,6 @@ export default function Form() {
                     />
                 </label>
 
-                <h3>Will you be Attending</h3>
-                <div className="potluck-form-isGoing-yes" />
-                <label>
-                    Yes:&nbsp;
-                    <input
-                        name="isGoing"
-                        type="radio"
-                        value="yes"
-                        checked={true}
-                        className="form-check-input"
-                    />
-                </label>
-
-                <div className="potluck-form-isGoing-no" />
-                <label>
-                    No:&nbsp;
-                    <input
-                        name="isGoing"
-                        type="radio"
-                        value="no"
-                        checked={true}
-                        className="form-check-input"
-                    />
-                </label>
-
-                <div className="potluck-form-numberOfGuests" />
-                <label>
-                    Total Guests:&nbsp;
-                    <select name="numberOfGuests" value={formValues.numberOfGuests} onChange={onInputChange}>
-                        <option value="">Select Guests</option>
-                        <option value="one">1</option>
-                        <option value="two">2</option>
-                        <option value="three">3</option>
-                        <option value="four">4</option>
-                        <option value="five">5</option>
-                        <option value="six">6</option>
-                    </select>
-                </label>
-
                 <div className="submit-button" />
                 <button disabled={disabled}>Submit</button>
                 <div className="errors">
@@ -215,8 +161,6 @@ export default function Form() {
                     <div>{formErrors.time}</div>
                     <div>{formErrors.location}</div>
                     <div>{formErrors.foodList}</div>
-                    <div>{formErrors.isGoing}</div>
-                    <div>{formErrors.numberOfGuests}</div>
                 </div>
             </form>
             {currentPotluck.map((potluck, index) => {
@@ -226,8 +170,6 @@ export default function Form() {
                     <p>{potluck.time}</p>
                     <p>{potluck.location}</p>
                     <p>{potluck.foodList}</p>
-                    <p>{potluck.isGoing}</p>
-                    <p>{potluck.numberOfGuests}</p>
                 </div>
             })}
         </div>

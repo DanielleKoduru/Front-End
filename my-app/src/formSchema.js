@@ -6,12 +6,10 @@ const formSchema = yup.object().shape({
         .trim()
         .min(3, 'Name must be at least 3 characters long')
         .required('Name is a required field'),
-    date: yup.string().required('You must choose a date'),
-    time: yup.string(),
-    location: yup.string(),
-    foodList: yup.string(),
-    isGoing: yup.string(),
-    numberOfGuests: yup.string().required('You must choose a number of guests'),
+    date: yup.string().required('You must enter a date'),
+    time: yup.string().required('You must enter a time'),
+    location: yup.string().required('You must enter a location'),
+    foodList: yup.string().required('You must enter a Menu'),
 });
 
 export default formSchema;
