@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Link, useHistory } from 'react-router-dom';
 import './App.css';
 import Form from './Form';
+import LoginForm from './login/loginForm';
 
 
 const App = () => {
@@ -15,11 +16,17 @@ const App = () => {
           <Link to="/" id="home"> Home </Link>
           <Link to="/Form" id="form"> Organizer </Link>
           <Link to="/Guest" id="guest"> Guest </Link>
+          <Link to="/loginForm" id="loginForm"> Login </Link>
+
         </div>
       </nav>
 
-      <Route path="/" component={App}>
+      <Route>
         <button onClick={() => history.push("/Form")}> Create A Potluck </button>
+      </Route>
+
+      <Route path="/loginForm">
+        <LoginForm />
       </Route>
 
       <Switch>
@@ -40,3 +47,4 @@ const App = () => {
 };
 
 export default App;
+
