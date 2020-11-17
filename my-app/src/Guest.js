@@ -9,12 +9,14 @@ export default function Guest() {
         guestName: '',
         isGoing: false,
         numberOfGuests: '',
+        foodList: false,
     };
 
     const initialFormErrors = {
         guestName: '',
         isGoing: false,
         numberOfGuests: '',
+        foodList: false,
     }
 
     const initialDisabled = true;
@@ -27,8 +29,7 @@ export default function Guest() {
 
     const postPotluck = (potluck) => {
         axios
-            .get('')
-            .post(`https://reqres.in/api/users`, potluck)
+            .get(`https://reqres.in/api/users`, potluck)
             .then((response) => {
                 setCurrentPotluck([response.data, ...currentPotluck]);
                 console.log(response)
@@ -98,52 +99,69 @@ export default function Guest() {
 
     return (
         <>
-            <h3>Will you be Attending</h3>
-            <div className="potluck-form-isGoing-yes" />
-            <label>
-                Yes:&nbsp;
+            <form onSubmit={onSubmit}>
+                <h3>Will you be Attending</h3>
+                <div className="potluck-form-isGoing-yes" />
+                <label>
+                    Yes:&nbsp;
                 <input
-                    name="isGoing"
-                    type="radio"
-                    value="yes"
-                    checked={true}
-                    className="form-check-input"
-                />
-            </label>
+                        name="isGoing"
+                        type="radio"
+                        value="yes"
+                        checked={true}
+                        className="form-check-input"
+                    />
+                </label>
 
-            <div className="potluck-form-isGoing-no" />
-            <label>
-                No:&nbsp;
+                <div className="potluck-form-isGoing-no" />
+                <label>
+                    No:&nbsp;
                 <input
-                    name="isGoing"
-                    type="radio"
-                    value="no"
-                    checked={true}
-                    className="form-check-input"
-                />
-            </label>
+                        name="isGoing"
+                        type="radio"
+                        value="no"
+                        checked={true}
+                        className="form-check-input"
+                    />
+                </label>
 
-            <div className="potluck-form-numberOfGuests" />
-            <label>
-                Total Guests:&nbsp;
+                <div className="potluck-form-numberOfGuests" />
+                <label>
+                    Total Guests:&nbsp;
                 <select name="numberOfGuests" value={formValues.numberOfGuests} onChange={onInputChange}>
-                    <option value="">Select Guests</option>
-                    <option value="one">1</option>
-                    <option value="two">2</option>
-                    <option value="three">3</option>
-                    <option value="four">4</option>
-                    <option value="five">5</option>
-                    <option value="six">6</option>
-                </select>
-            </label>
+                        <option value="">Select Guests</option>
+                        <option value="one">1</option>
+                        <option value="two">2</option>
+                        <option value="three">3</option>
+                        <option value="four">4</option>
+                        <option value="five">5</option>
+                        <option value="six">6</option>
+                    </select>
+                </label>
 
-            <div className="submit-button" />
-            <button disabled={disabled}>Submit</button>
-            <div className="errors">
-                <div>{formErrors.guestName}</div>
-                <div>{formErrors.isGoing}</div>
-                <div>{formErrors.numberOfGuests}</div>
-            </div>
+                <label className="menu-checkbox">
+                    Select an item to bring:&nbsp;
+                    <input
+                        type="checkbox"
+                        name="foodList"
+                        checked={formValues.foodList}
+                        onChange={onCheckboxChange}
+                    />
+                    {formValues.foodList && formValues.foodList.map(foodList => (
+                        <div key={foodList} className="food-list">
+                            {foodList}
+                        </div>
+                    ))}
+                </label>
+
+                <div className="submit-button" />
+                <button disabled={disabled}>Submit</button>
+                <div className="errors">
+                    <div>{formErrors.guestName}</div>
+                    <div>{formErrors.isGoing}</div>
+                    <div>{formErrors.numberOfGuests}</div>
+                </div>
+            </form>
         </>
     )
 }

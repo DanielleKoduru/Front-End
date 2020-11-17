@@ -11,8 +11,6 @@ export default function Form() {
         time: '',
         location: '',
         foodList: '',
-        isGoing: false,
-        numberOfGuests: '',
     };
 
     const initialFormErrors = {
@@ -21,8 +19,6 @@ export default function Form() {
         time: '',
         location: '',
         foodList: '',
-        isGoing: false,
-        numberOfGuests: '',
     }
 
     const initialDisabled = true;
@@ -32,10 +28,10 @@ export default function Form() {
     const [formErrors, setFormErrors] = useState(initialFormErrors);
     const [disabled, setDisabled] = useState(initialDisabled);
     const [currentPotluck, setCurrentPotluck] = useState([]);
+    const [menu, setMenu] = useState();
 
     const postPotluck = (potluck) => {
         axios
-            .get('')
             .post(`https://reqres.in/api/users`, potluck)
             .then((response) => {
                 setCurrentPotluck([response.data, ...currentPotluck]);
@@ -84,6 +80,14 @@ export default function Form() {
             foodlist: formValues.foodList,
         };
         postPotluck(potluck);
+    };
+
+    const addNewFood = (food) => {
+        const newFood = {
+            id: Date.now(),
+            title: food.foodList,
+        };
+        setMenu([newFood, ...menu]);
     };
 
     useEffect(() => {
@@ -152,6 +156,7 @@ export default function Form() {
                         onChange={onInputChange}
                         checked={formValues.name}
                     />
+                    <button onclick={() => addNewFood = { addNewFood }}>Add Menu Item</button>
                 </label>
 
                 <div className="submit-button" />
