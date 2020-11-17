@@ -35,6 +35,7 @@ export default function Form() {
 
     const postPotluck = (potluck) => {
         axios
+            .get('')
             .post(`https://reqres.in/api/users`, potluck)
             .then((response) => {
                 setCurrentPotluck([response.data, ...currentPotluck]);

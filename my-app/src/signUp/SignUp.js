@@ -27,6 +27,7 @@ const SignUp = () => {
 
     const postNewUsers = (newUser) => {
         axios
+            .get('')
             .post(`https://reqres.in/api/users`, newUser)
             .then((response) => {
                 setUsers([...users, response.data]);
