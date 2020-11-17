@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Link, useHistory } from 'react-router-dom';
 import './App.css';
 import Form from './Form';
+import Guest from './Guest';
 import LoginForm from './login/loginForm';
 import SignUp from './signUp/SignUp';
 
@@ -37,14 +38,12 @@ const App = () => {
       <Switch>
         <Route path="/Guest">
           <h1> Upcoming Potluck's </h1>
+          <Guest />
         </Route>
 
         <Route path="/Form">
           <Form />
         </Route>
-
-        {/* <Route path="/Guest">
-        </Route> */}
 
       </Switch>
     </>
