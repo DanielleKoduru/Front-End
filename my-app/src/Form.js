@@ -98,7 +98,7 @@ export default function Form() {
 
 
     return (
-        <div className="Form">
+        <div className="form">
             <h2>Create your Potluck</h2>
             <div className="potluck-form" />
             <form onSubmit={onSubmit}>
@@ -159,7 +159,7 @@ export default function Form() {
                     <button onClick={() => addNewFood = { addNewFood }}>Add Menu Item</button>
                 </label>
 
-                <div className="submit-button" />
+                <div className="form-submit-button" />
                 <button disabled={disabled}>Submit</button>
                 <div className="errors">
                     <div>{formErrors.eventName}</div>

@@ -1,38 +1,123 @@
-.App {
+/* App styling */
+html
+
+.nav-user {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Form styling */
+.form{
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.potluck-form {
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.potluck-form-name {
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.potluck-form-date {
+  text-align: center;
+}
+
+.potluck-form-time {
+  text-align: center;
+}
+
+.potluck-form-location {
+  text-align: center;
+}
+
+.potluck-form-foodList {
+  text-align: center;
+}
+
+.form-submit-button {
+  text-align: center;
+}
+
+
+/* Guest page Styling */
+.guest-page {
+  text-align: center;
+}
+
+.potluck-form-your-name {
+  text-align: center;
+}
+
+.potluck-form-isGoing-yes {
+  text-align: center;
+}
+
+.potluck-form-isGoing-no {
+  text-align: center;
+}
+
+.potluck-form-numberOfGuests {
+  text-align: center;
+}
+
+.potluck-form-menu-checkbox {
+  text-align: center;
+}
+
+.guest-submit-button {
+  text-align: center;
+}
+
+/* Login Styling */
+.login-form{
+  text-align: center;
+}
+
+.login-username {
+  text-align: center;
+}
+
+.login-password {
+  text-align: center;
+}
+
+.loginBtn {
+  text-align: center;
+}
+
+.back-to-signUpBtn {
+  text-align: center;
+}
+
+/* Sign-Up Styling */
+.sign-up-form { 
+  text-align: center;
+}
+
+.signUp-username {
+  text-align: center;
+}
+
+.signUp-email {
+  text-align: center;
+}
+
+.signUp-password {
+  text-align: center;
+}
+
+.signUpBtn {
+  text-align: center;
+}
+
+.back-to-login {
+  text-align: center;
+}
+
+.back-to-loginBtn {
+  text-align: center;
 }

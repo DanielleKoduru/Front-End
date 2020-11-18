@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
-import { Route, Switch, Link, useHistory } from 'react-router-dom';
-import './App.css';
-import Form from './Form';
-import Guest from './Guest';
-import LoginForm from './login/loginForm';
-import SignUp from './signUp/SignUp';
+import React, { useState } from "react";
+import { Route, Switch, Link, useHistory } from "react-router-dom";
+import "./App.css";
+import Form from "./Form";
+import Guest from "./Guest";
+import LoginForm from "./login/loginForm";
+import SignUp from "./signUp/SignUp";
+import { connect } from "react-redux";
+import { AddUser } from "./actions/userActions";
 
 
-const App = () => {
+const App = (props) => {
+  console.log("App.js props:", props);
   const history = useHistory();
-  const [submited, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <>
       <Switch>
-        <div className='login-signUp'>
-          <Route exact path="/loginForm" render={() => <LoginForm {...props} />} />
+        <div>
+          <Route exact path="/loginForm" render={() => <LoginForm {...props} setSubmitted={setSubmitted} />} />
 
           <Route exact path="/SignUp">
             <SignUp />
@@ -23,16 +26,18 @@ const App = () => {
         </div>
 
         <nav>
-          <h1>Potluck Planner</h1>
-          <div className="nav">
-            <Link to="/" id="home"> Home </Link>
-            <Link to="/Form" id="form"> Organizer </Link>
-            <Link to="/Guest" id="guest"> Guest </Link>
+          <div className="header">
+            <h1>Potluck Planner</h1>
+          </div>
+          <div className="nav-user">
+            <Link to="/" id="home">{" "}Home{" "}</Link>
+            <Link to="/Form" id="form">{" "}Organizer{" "}</Link>
+            <Link to="/Guest" id="guest">{" "}Guest{" "}</Link>
           </div>
         </nav>
 
         <Route path="/">
-          <button onClick={() => history.push("/Form")}> Create A Potluck </button>
+          <button onClick={() => history.push("/Form")}>{" "}Create A Potluck{" "}</button>
         </Route>
 
         <Route exact path="/Guest">
@@ -43,11 +48,17 @@ const App = () => {
         <Route exact path="/Form">
           <Form />
         </Route>
-
       </Switch>
     </>
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return state;
+};
 
+const mapDispatchToProps = (dispatch) => ({
+  SignUp: (newUser) => dispatch(AddUser(newUser)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
