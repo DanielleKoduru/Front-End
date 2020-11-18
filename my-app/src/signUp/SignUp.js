@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import * as yup from 'yup';
 import signUpSchema from './signUpSchema';
@@ -24,10 +25,11 @@ const SignUp = () => {
     const [signUpErrors, setSignUpErrors] = useState(initialSignUpErrors);
     const [disabledLogin, setDisabledLogin] = useState(initialDisabled);
     const [users, setUsers] = useState(initialUsers);
+    const history = useHistory();
 
     const postNewUsers = (newUser) => {
         axios
-            .post(`https://potluck-planner-tt104.herokuapp.com//signup`, newUser)
+            .post(`https://potluck-planner-tt104.herokuapp.com/signup`, newUser)
             .then((response) => {
                 setUsers([...users, response.data]);
                 console.log(response)
@@ -60,6 +62,7 @@ const SignUp = () => {
         const { name, value } = event.target;
         change(name, value);
     }
+
     const change = (name, value) => {
         validate(name, value)
         setSignUpValues({
@@ -97,6 +100,12 @@ const SignUp = () => {
         <form onSubmit={onSubmit}>
             <h1>Sign Up</h1>
 
+            <div className="signup-nav">
+                <nav>
+                    <Link to="/" id="home"> Home </Link>
+                </nav>
+            </div>
+
             <div>
                 <div>{signUpErrors.username}</div>
                 <div>{signUpErrors.email}</div>
@@ -106,7 +115,7 @@ const SignUp = () => {
                 <label>Username:  </label>
                 <input
                     value={signUpValues.username}
-                    onInputChange={onInputChange}
+                    onChange={onInputChange}
                     name='username'
                     type='username'
                 />
@@ -116,7 +125,7 @@ const SignUp = () => {
                 <label>Email:  </label>
                 <input
                     value={signUpValues.email}
-                    onInputChange={onInputChange}
+                    onChange={onInputChange}
                     name='email'
                     type='email'
                 />
@@ -126,13 +135,16 @@ const SignUp = () => {
                 <label>Password:  </label>
                 <input
                     value={signUpValues.password}
-                    onInputChange={onInputChange}
+                    onChange={onInputChange}
                     name='password'
                     type='password'
                 />
             </div>
 
             <button disabledLogin={disabledLogin} id='submitBtn'>Submit</button>
+
+            <p> Already have an account? </p>
+            <button onClick={() => history.push("/loginForm")}> Login </button>
         </form>
     )
 }

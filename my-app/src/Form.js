@@ -156,13 +156,13 @@ export default function Form() {
                         onChange={onInputChange}
                         checked={formValues.name}
                     />
-                    <button onclick={() => addNewFood = { addNewFood }}>Add Menu Item</button>
+                    <button onClick={() => addNewFood = { addNewFood }}>Add Menu Item</button>
                 </label>
 
                 <div className="submit-button" />
                 <button disabled={disabled}>Submit</button>
                 <div className="errors">
-                    <div>{formErrors.name}</div>
+                    <div>{formErrors.eventName}</div>
                     <div>{formErrors.date}</div>
                     <div>{formErrors.time}</div>
                     <div>{formErrors.location}</div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import * as yup from 'yup';
 import loginSchema from './loginSchema';
@@ -22,6 +23,8 @@ const LoginForm = () => {
     const [loginErrors, setLoginErrors] = useState(initialLoginErrors);
     const [disabledLogin, setDisabledLogin] = useState(initialDisabled);
     const [users, setUsers] = useState(initialUsers);
+    const history = useHistory();
+
 
     const postNewUsers = (newUser) => {
         axios
@@ -92,6 +95,12 @@ const LoginForm = () => {
         <form onSubmit={onSubmit}>
             <h1>Login</h1>
 
+            <div className="login-nav">
+                <nav>
+                    <Link to="/" id="home"> Home </Link>
+                </nav>
+            </div>
+
             <div>
                 <div>{loginErrors.username}</div>
                 <div>{loginErrors.password}</div>
@@ -101,7 +110,7 @@ const LoginForm = () => {
                 <label>Username:  </label>
                 <input
                     value={loginValues.username}
-                    onInputChange={onInputChange}
+                    onChange={onInputChange}
                     name='username'
                     type='username'
                 />
@@ -111,13 +120,16 @@ const LoginForm = () => {
                 <label>Password:  </label>
                 <input
                     value={loginValues.password}
-                    onInputChange={onInputChange}
+                    onChange={onInputChange}
                     name='password'
                     type='password'
                 />
             </div>
 
-            <button disabledLogin={disabledLogin} id='submitBtn'>Submit</button>
+            <button disabledLogin={disabledLogin} id='submitBtn'>Login</button>
+
+            <p> Need to sign up? </p>
+            <button onClick={() => history.push("/SignUp")}> Sign-Up </button>
         </form>
     )
 }
