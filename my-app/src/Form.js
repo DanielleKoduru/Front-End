@@ -32,7 +32,7 @@ export default function Form() {
 
     const postPotluck = (potluck) => {
         axios
-            .post(`https://reqres.in/api/users`, potluck)
+            .post(`https://potluck-planner-tt104.herokuapp.com/potlucks`, potluck)
             .then((response) => {
                 setCurrentPotluck([response.data, ...currentPotluck]);
                 console.log(response)

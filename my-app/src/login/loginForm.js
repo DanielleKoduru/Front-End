@@ -4,12 +4,12 @@ import * as yup from 'yup';
 import loginSchema from './loginSchema';
 
 const initialLoginValues = {
-    email: '',
+    username: '',
     password: '',
 };
 
 const initialLoginErrors = {
-    email: '',
+    username: '',
     password: '',
 }
 
@@ -25,8 +25,7 @@ const LoginForm = () => {
 
     const postNewUsers = (newUser) => {
         axios
-            .get('')
-            .post(`https://reqres.in/api/users`, newUser)
+            .post(`https://potluck-planner-tt104.herokuapp.com/login`, newUser)
             .then((response) => {
                 setUsers([...users, response.data]);
                 console.log(response)
@@ -73,7 +72,7 @@ const LoginForm = () => {
 
     const submit = () => {
         const newUser = {
-            email: loginValues.email.trim(),
+            username: loginValues.username.trim(),
             password: loginValues.password.trim()
         }
         postNewUsers(newUser)
@@ -98,21 +97,25 @@ const LoginForm = () => {
                 <div>{loginErrors.password}</div>
             </div>
 
-            <label>Username:  </label>
-            <input
-                value={loginValues.username}
-                onInputChange={onInputChange}
-                name='username'
-                type='username'
-            />
+            <div className='login-username'>
+                <label>Username:  </label>
+                <input
+                    value={loginValues.username}
+                    onInputChange={onInputChange}
+                    name='username'
+                    type='username'
+                />
+            </div>
 
-            <label>Password:  </label>
-            <input
-                value={loginValues.password}
-                onInputChange={onInputChange}
-                name='password'
-                type='password'
-            />
+            <div className='login-password'>
+                <label>Password:  </label>
+                <input
+                    value={loginValues.password}
+                    onInputChange={onInputChange}
+                    name='password'
+                    type='password'
+                />
+            </div>
 
             <button disabledLogin={disabledLogin} id='submitBtn'>Submit</button>
         </form>

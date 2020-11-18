@@ -27,8 +27,7 @@ const SignUp = () => {
 
     const postNewUsers = (newUser) => {
         axios
-            .get('')
-            .post(`https://reqres.in/api/users`, newUser)
+            .post(`https://potluck-planner-tt104.herokuapp.com//signup`, newUser)
             .then((response) => {
                 setUsers([...users, response.data]);
                 console.log(response)
@@ -96,37 +95,42 @@ const SignUp = () => {
 
     return (
         <form onSubmit={onSubmit}>
-            <h1>Login Form</h1>
+            <h1>Sign Up</h1>
 
             <div>
                 <div>{signUpErrors.username}</div>
                 <div>{signUpErrors.email}</div>
                 <div>{signUpErrors.password}</div>
             </div>
+            <div className='username'>
+                <label>Username:  </label>
+                <input
+                    value={signUpValues.username}
+                    onInputChange={onInputChange}
+                    name='username'
+                    type='username'
+                />
+            </div>
 
-            <label>Username:  </label>
-            <input
-                value={signUpValues.username}
-                onInputChange={onInputChange}
-                name='username'
-                type='username'
-            />
+            <div className='email'>
+                <label>Email:  </label>
+                <input
+                    value={signUpValues.email}
+                    onInputChange={onInputChange}
+                    name='email'
+                    type='email'
+                />
+            </div>
 
-            <label>Email:  </label>
-            <input
-                value={signUpValues.email}
-                onInputChange={onInputChange}
-                name='email'
-                type='email'
-            />
-
-            <label>Password:  </label>
-            <input
-                value={signUpValues.password}
-                onInputChange={onInputChange}
-                name='password'
-                type='password'
-            />
+            <div className='password'>
+                <label>Password:  </label>
+                <input
+                    value={signUpValues.password}
+                    onInputChange={onInputChange}
+                    name='password'
+                    type='password'
+                />
+            </div>
 
             <button disabledLogin={disabledLogin} id='submitBtn'>Submit</button>
         </form>
