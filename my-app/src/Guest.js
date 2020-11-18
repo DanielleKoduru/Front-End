@@ -7,14 +7,14 @@ import guestSchema from './guestSchema';
 export default function Guest() {
     const initialFormValues = {
         guestName: '',
-        isGoing: false,
+        isGoing: '',
         numberOfGuests: '',
         foodList: false,
     };
 
     const initialFormErrors = {
         guestName: '',
-        isGoing: false,
+        isGoing: '',
         numberOfGuests: '',
         foodList: false,
     }
@@ -29,7 +29,7 @@ export default function Guest() {
 
     const postPotluck = (potluck) => {
         axios
-            .get(`https://reqres.in/api/users`, potluck)
+            .get(`https://potluck-planner-tt104.herokuapp.com/potluck-items/`, potluck)
             .then((response) => {
                 setCurrentPotluck([response.data, ...currentPotluck]);
                 console.log(response)
@@ -100,6 +100,18 @@ export default function Guest() {
     return (
         <>
             <form onSubmit={onSubmit}>
+
+                <div className="potluck-form-your-name" />
+                <label>
+                    Your Name:&nbsp;
+                    <input
+                        name="guestName"
+                        type="text"
+                        onChange={onInputChange}
+                        checked={formValues.guestName}
+                    />
+                </label>
+
                 <h3>Will you be Attending</h3>
                 <div className="potluck-form-isGoing-yes" />
                 <label>
@@ -139,6 +151,7 @@ export default function Guest() {
                     </select>
                 </label>
 
+                <div className="potluck-form-menu-checkbox" />
                 <label className="menu-checkbox">
                     Select an item to bring:&nbsp;
                     <input

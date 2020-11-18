@@ -14,6 +14,7 @@ const App = (props) => {
 
   return (
     <>
+<<<<<<< HEAD
       <nav>
         <h1>Potluck Planner</h1>
         <div className="nav">
@@ -37,20 +38,39 @@ const App = (props) => {
             {" "}
             Sign Up{" "}
           </Link>
-        </div>
-      </nav>
-
-      {/* <Route>
-        <button onClick={() => history.push("/Form")}> Create A Potluck </button>
-      </Route> */}
-
-      <Route path="/loginForm">
-        <LoginForm />
-      </Route>
-
-      <Route path="/SignUp" render={() => <SignUp {...props} />} />
-
+=======
+      {/* This is currently commented out so I can work on my home, guest, and organizer page. since the login and signup is password protected and not connected */}
       <Switch>
+        <div className='login-signUp'>
+          <Route path="/loginForm">
+            <LoginForm />
+          </Route>
+
+          <Route path="/SignUp">
+            <SignUp />
+          </Route>
+>>>>>>> e524d8df8d8a6a202a505e799a3cbfdf76f3e1e3
+        </div>
+
+<<<<<<< HEAD
+      <Route path="/SignUp" render={() => <SignUp {...props} />} />
+=======
+        <nav>
+          <h1>Potluck Planner</h1>
+          <div className="nav">
+            <Link to="/" id="home"> Home </Link>
+            <Link to="/Form" id="form"> Organizer </Link>
+            <Link to="/Guest" id="guest"> Guest </Link>
+          </div>
+        </nav>
+
+        <Route path="/">
+          <button onClick={() => history.push("/Form")}> Create A Potluck </button>
+        </Route>
+>>>>>>> e524d8df8d8a6a202a505e799a3cbfdf76f3e1e3
+
+        {/* comment out this switch when app is fully working */}
+        {/* <Switch> */}
         <Route path="/Guest">
           <h1> Upcoming Potluck's </h1>
           <Guest />
