@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import loginSchema from './loginSchema';
 import { useHistory, Link } from 'react-router-dom';
+import { Login } from '../styled-components';
 
 const initialLoginValues = {
     email: "",
@@ -83,50 +84,53 @@ const LoginForm = (props) => {
     }, [loginValues]);
 
     return (
-        <form onSubmit={onSubmit}>
-            <div className="login-form">
-                <h1>Login</h1>
-                <Link to="/" id="home">Home</Link>
+        <Login>
+            <Link to="/" id="home">Home</Link>
+            <Link to="/SignUp" id="signUp">Sign-Up</Link>
+            <form onSubmit={onSubmit}>
+                <div className="login-form">
+                    <h1>Login</h1>
 
-                <div>
-                    <div>{loginErrors.username}</div>
-                    <div>{loginErrors.password}</div>
+                    <div>
+                        <div>{loginErrors.username}</div>
+                        <div>{loginErrors.password}</div>
+                    </div>
+
+                    <div className="login-username">
+                        <label>Username: </label>
+                        <input
+                            value={loginValues.username}
+                            onChange={onInputChange}
+                            name="username"
+                            type="username"
+                        />
+                    </div>
+
+                    <div className="login-password">
+                        <label>Password:  </label>
+                        <input
+                            value={loginValues.password}
+                            onChange={onInputChange}
+                            name="password"
+                            type="password"
+                        />
+                    </div>
+
+                    <div className="loginBtn">
+                        <button disabled={disabledLogin} id="submitBtn">Submit</button>
+                    </div>
+
+                    <div className="back-to-signUp">
+                        <p>Forgot to Sign-Up?</p>
+                    </div>
+
+                    <div className="back-to-signUpBtn">
+                        <button onClick={() => history.push("/SignUp")} id="signUpBtn">Sign-Up</button>
+                    </div>
+
                 </div>
-
-                <div className="login-username">
-                    <label>Username: </label>
-                    <input
-                        value={loginValues.username}
-                        onChange={onInputChange}
-                        name="username"
-                        type="username"
-                    />
-                </div>
-
-                <div className="login-password">
-                    <label>Password: </label>
-                    <input
-                        value={loginValues.password}
-                        onChange={onInputChange}
-                        name="password"
-                        type="password"
-                    />
-                </div>
-
-                <div className="loginBtn">
-                    <button disabled={disabledLogin} id="submitBtn">Submit</button>
-                </div>
-
-                <div className="back-to-signUp">
-                    <p>Forgot to Sign-Up?</p>
-                </div>
-
-                <div className="back-to-signUpBtn">
-                    <button onClick={() => history.push("/SignUp")}>Sign-Up</button>
-                </div>
-
-            </div>
-        </form>
+            </form>
+        </Login>
     );
 };
 

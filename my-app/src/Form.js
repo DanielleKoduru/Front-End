@@ -3,6 +3,8 @@ import axios from 'axios';
 import * as yup from 'yup';
 import formSchema from './formSchema';
 import './App.css';
+import { FormPage } from './styled-components';
+
 
 export default function Form() {
     const initialFormValues = {
@@ -82,7 +84,7 @@ export default function Form() {
         postPotluck(potluck);
     };
 
-    const addNewFood = (food) => {
+    let addNewFood = (food) => {
         const newFood = {
             id: Date.now(),
             title: food.foodList,
@@ -98,86 +100,88 @@ export default function Form() {
 
 
     return (
-        <div className="form">
-            <h2>Create your Potluck</h2>
-            <div className="potluck-form" />
-            <form onSubmit={onSubmit}>
+        <FormPage>
+            <div className="form">
+                <h2>Create your Potluck</h2>
+                <div className="potluck-form" />
+                <form onSubmit={onSubmit}>
 
-                <div className="potluck-form-name" />
-                <label>
-                    Event Name:&nbsp;
+                    <div className="potluck-form-name" />
+                    <label>
+                        Event Name:&nbsp;
                 <input
-                        name="eventName"
-                        type="text"
-                        onChange={onInputChange}
-                        value={formValues.name}
-                    />
-                </label>
+                            name="eventName"
+                            type="text"
+                            onChange={onInputChange}
+                            value={formValues.name}
+                        />
+                    </label>
 
-                <div className="potluck-form-date" />
-                <label>
-                    Date:&nbsp;
+                    <div className="potluck-form-date" />
+                    <label>
+                        Date:&nbsp;
                     <input
-                        name="date"
-                        type="text"
-                        onChange={onInputChange}
-                        value={formValues.name}
-                    />
-                </label>
+                            name="date"
+                            type="text"
+                            onChange={onInputChange}
+                            value={formValues.name}
+                        />
+                    </label>
 
-                <div className="potluck-form-time" />
-                <label>
-                    Time:&nbsp;
+                    <div className="potluck-form-time" />
+                    <label>
+                        Time:&nbsp;
                     <input
-                        name="time"
-                        type="text"
-                        onChange={onInputChange}
-                        checked={formValues.name}
-                    />
-                </label>
+                            name="time"
+                            type="text"
+                            onChange={onInputChange}
+                            checked={formValues.name}
+                        />
+                    </label>
 
-                <div className="potluck-form-location" />
-                <label>
-                    Location:&nbsp;
+                    <div className="potluck-form-location" />
+                    <label>
+                        Location:&nbsp;
                     <input
-                        name="location"
-                        type="text"
-                        onChange={onInputChange}
-                        checked={formValues.name}
-                    />
-                </label>
+                            name="location"
+                            type="text"
+                            onChange={onInputChange}
+                            checked={formValues.name}
+                        />
+                    </label>
 
-                <div className="potluck-form-foodList" />
-                <label>
-                    Menu:&nbsp;
+                    <div className="potluck-form-foodList" />
+                    <label>
+                        Menu:&nbsp;
                     <input
-                        name="foodList"
-                        type="text"
-                        onChange={onInputChange}
-                        checked={formValues.name}
-                    />
-                    <button onClick={() => addNewFood = { addNewFood }}>Add Menu Item</button>
-                </label>
+                            name="foodList"
+                            type="text"
+                            onChange={onInputChange}
+                            checked={formValues.name}
+                        />
+                        <button onClick={() => addNewFood = { addNewFood }}>Add Menu Item</button>
+                    </label>
 
-                <div className="form-submit-button" />
-                <button disabled={disabled}>Submit</button>
-                <div className="errors">
-                    <div>{formErrors.eventName}</div>
-                    <div>{formErrors.date}</div>
-                    <div>{formErrors.time}</div>
-                    <div>{formErrors.location}</div>
-                    <div>{formErrors.foodList}</div>
-                </div>
-            </form>
-            {currentPotluck.map((potluck, index) => {
-                return <div key={index} >
-                    <h2>{potluck.eventName}</h2>
-                    <p>{potluck.date}</p>
-                    <p>{potluck.time}</p>
-                    <p>{potluck.location}</p>
-                    <p>{potluck.foodList}</p>
-                </div>
-            })}
-        </div>
+                    <div className="form-submit-button" />
+                    <button disabled={disabled} id="submitBtn">Submit</button>
+                    <div className="errors">
+                        <div>{formErrors.eventName}</div>
+                        <div>{formErrors.date}</div>
+                        <div>{formErrors.time}</div>
+                        <div>{formErrors.location}</div>
+                        <div>{formErrors.foodList}</div>
+                    </div>
+                </form>
+                {currentPotluck.map((potluck, index) => {
+                    return <div key={index} >
+                        <h2>{potluck.eventName}</h2>
+                        <p>{potluck.date}</p>
+                        <p>{potluck.time}</p>
+                        <p>{potluck.location}</p>
+                        <p>{potluck.foodList}</p>
+                    </div>
+                })}
+            </div>
+        </FormPage>
     );
 };

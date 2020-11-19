@@ -1,5 +1,11 @@
 /* App styling */
-html
+body, select, input, textarea {
+		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-size: 17pt;
+		font-weight: 300;
+		letter-spacing: 0.025em;
+		line-height: 1.65;
+}
 
 .nav-user {
   text-align: center;
@@ -14,110 +20,25 @@ header {
   text-align: center;
 }
 
-.potluck-form {
-  text-align: center;
-}
-
-.potluck-form-name {
-  text-align: center;
-}
-
-.potluck-form-date {
-  text-align: center;
-}
-
-.potluck-form-time {
-  text-align: center;
-}
-
-.potluck-form-location {
-  text-align: center;
-}
-
-.potluck-form-foodList {
-  text-align: center;
-}
-
-.form-submit-button {
-  text-align: center;
-}
-
-
 /* Guest page Styling */
 .guest-page {
   text-align: center;
 }
 
-.potluck-form-your-name {
-  text-align: center;
-}
-
-.potluck-form-isGoing-yes {
-  text-align: center;
-}
-
-.potluck-form-isGoing-no {
-  text-align: center;
-}
-
-.potluck-form-numberOfGuests {
-  text-align: center;
-}
-
-.potluck-form-menu-checkbox {
-  text-align: center;
-}
-
-.guest-submit-button {
-  text-align: center;
-}
 
 /* Login Styling */
 .login-form{
   text-align: center;
+  border: 0;
+	background: #242943;
+  margin: 2em 0;
+  color: #ffffff;
 }
 
-.login-username {
-  text-align: center;
-}
 
-.login-password {
-  text-align: center;
-}
-
-.loginBtn {
-  text-align: center;
-}
-
-.back-to-signUpBtn {
-  text-align: center;
-}
 
 /* Sign-Up Styling */
 .sign-up-form { 
   text-align: center;
 }
 
-.signUp-username {
-  text-align: center;
-}
-
-.signUp-email {
-  text-align: center;
-}
-
-.signUp-password {
-  text-align: center;
-}
-
-.signUpBtn {
-  text-align: center;
-}
-
-.back-to-login {
-  text-align: center;
-}
-
-.back-to-loginBtn {
-  text-align: center;
-}
