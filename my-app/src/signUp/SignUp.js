@@ -5,7 +5,9 @@ import * as yup from 'yup';
 import signUpSchema from './signUpSchema';
 import { SignUpPage } from '../styled-components';
 
+
 const initialSignUpValues = {
+
     username: "",
     email: "",
     password: "",
@@ -15,12 +17,14 @@ const initialSignUpErrors = {
     username: "",
     email: "",
     password: "",
+
 };
 
 const initialUsers = [];
 const initialDisabled = true;
 
 const SignUp = () => {
+
     const [signUpValues, setSignUpValues] = useState(initialSignUpValues);
     const [signUpErrors, setSignUpErrors] = useState(initialSignUpErrors);
     const [disabledLogin, setDisabledLogin] = useState(initialDisabled);
@@ -147,5 +151,6 @@ const SignUp = () => {
         </SignUpPage>
     );
 };
+
 
 export default SignUp;

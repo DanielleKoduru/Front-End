@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Route, Switch, Link, useHistory } from "react-router-dom";
 import "./App.css";
@@ -9,7 +10,6 @@ import { connect } from "react-redux";
 import { AddUser } from "./actions/userActions";
 import { Nav } from './styled-components';
 import { WholeApp } from './styled-components';
-
 
 
 const App = (props) => {
@@ -44,6 +44,7 @@ const App = (props) => {
 
         <Route path="/">
           <button onClick={() => history.push("/Form")}>{" "}Create A Potluck{" "}</button>
+
         </Route>
 
         <Route exact path="/Guest">
@@ -54,9 +55,11 @@ const App = (props) => {
         <Route exact path="/Form">
           <Form />
         </Route>
+
         {/* </Switch> */}
       </>
     </WholeApp>
+
   );
 };
 
