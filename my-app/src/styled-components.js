@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 export const WholeApp = styled.div`
-    background-color: #242943;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 1);
-    color: #ffffff;
+  
 `;
 
 export const SignUpPage = styled.div`
@@ -129,29 +127,75 @@ export const Login = styled.div`
 `;
 
 export const Nav = styled.div`
+
+    .header {
+        color: #ffffff; 
+        font-size: 25pt;
+    }
+
     #home {
         text-decoration: none;
-        color: #ffffff; 
+        color: #ffffff;
+        border: solid 1px #242943; 
+        margin-right: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
     }
 
     #form {
         text-decoration: none;
         color: #ffffff; 
+        border: solid 1px #242943;
+        margin-right: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
     }
 
     #guest {
         text-decoration: none;
         color: #ffffff;
+        border: solid 1px #242943;
+        margin-left: 4px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
     }
 `;
 
 export const FormPage = styled.div`
-    html {
-        background-color: #242943;
+
+     .form {
+    //   text-align: center;
     }
 
-    .form {
-       
+    #submitBtn {
+        background-color: #ffffff;  
+        border: solid 1px #242943;
+        color: #242943;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
     }
 
+    #addMenuItem {
+        background-color: #ffffff;  
+        border: solid 1px #242943;
+        color: #242943;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+        margin-left: 15px;
+    }
+
+    .potluck-form-name {
+        color: red;
+    }
+
+    .potluck-form-date {
+        padding-bottom: 15px;
+    }
+
+    .potluck-form-time {
+        padding-bottom: 15px;
+    }
+
+    .potluck-form-location {
+        padding-bottom: 15px;
+    }
+
+    .potluck-form-foodList {
+        padding-bottom: 15px;
+    }
 `;

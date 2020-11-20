@@ -43,7 +43,7 @@ const App = (props) => {
         </Nav>
 
         <Route path="/">
-          <button onClick={() => history.push("/Form")}>{" "}Create A Potluck{" "}</button>
+          {/* <button onClick={() => history.push("/Form")}>{" "}Create A Potluck{" "}</button> */}
         </Route>
 
         <Route exact path="/Guest">
