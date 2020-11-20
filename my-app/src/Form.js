@@ -159,7 +159,7 @@ export default function Form() {
                             onChange={onInputChange}
                             checked={formValues.name}
                         />
-                        <button onClick={() => addNewFood = { addNewFood }}>Add Menu Item</button>
+                        <button onClick={() => addNewFood = { addNewFood }} id="addMenuItem">Add Menu Item</button>
                     </label>
 
                     <div className="form-submit-button" />
