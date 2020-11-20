@@ -168,7 +168,7 @@ export default function Guest() {
                         ))}
                     </label>
 
-                    <div className="submit-button" />
+                    <div className="guest-submit-button" />
                     <button disabled={disabled}>Submit</button>
                     <div className="errors">
                         <div>{formErrors.guestName}</div>

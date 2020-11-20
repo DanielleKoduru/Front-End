@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch, Link, useHistory } from "react-router-dom";
 import "./App.css";
 import Form from "./Form";
@@ -8,47 +8,43 @@ import LoginForm from "./login/loginForm";
 import SignUp from "./signUp/SignUp";
 import { connect } from "react-redux";
 import { AddUser } from "./actions/userActions";
+import { Nav } from './styled-components';
+import { WholeApp } from './styled-components';
+
 
 const App = (props) => {
   console.log("App.js props:", props);
   const history = useHistory();
-  const [submited, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   return (
-    <>
-      <Switch>
+    <WholeApp>
+      <>
+        {/* <Switch> */}
+        <div>
+          {/* <Route exact path="/loginForm" render={() => <LoginForm {...props} setSubmitted={setSubmitted} />} {props.submitted ? '/' : '/loginForm'} />
 
-        <div className='login-signUp'>
-          <Route exact path="/loginForm" render={() => <LoginForm {...props} />} />
-
-          <Route exact path="/SignUp">
-            <SignUp />
-          </Route>
+        <Route exact path="/SignUp">
+          <SignUp {props.submitted ? '/' : '/SignUp'} />
+        </Route> */}
         </div>
 
-        <nav>
-          <h1>Potluck Planner</h1>
-          <div className="nav">
-            <Link to="/" id="home">
-              {" "}
-              Home{" "}
-            </Link>
-            <Link to="/Form" id="form">
-              {" "}
-              Organizer{" "}
-            </Link>
-            <Link to="/Guest" id="guest">
-              {" "}
-              Guest{" "}
-            </Link>
-          </div>
-        </nav>
+        <Nav>
+          <nav>
+            <div className="header">
+              <h1>Potluck Planner</h1>
+            </div>
+            <div className="nav-user">
+              <Link to="/" id="home">{" "}Home{" "}</Link>
+              <Link to="/Form" id="form">{" "}Organizer{" "}</Link>
+              <Link to="/Guest" id="guest">{" "}Guest{" "}</Link>
+            </div>
+          </nav>
+        </Nav>
 
         <Route path="/">
-          <button onClick={() => history.push("/Form")}>
-            {" "}
-            Create A Potluck{" "}
-          </button>
+          <button onClick={() => history.push("/Form")}>{" "}Create A Potluck{" "}</button>
+
         </Route>
 
         <Route exact path="/Guest">
@@ -59,8 +55,11 @@ const App = (props) => {
         <Route exact path="/Form">
           <Form />
         </Route>
-      </Switch>
-    </>
+
+        {/* </Switch> */}
+      </>
+    </WholeApp>
+
   );
 };
 
