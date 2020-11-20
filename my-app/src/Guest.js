@@ -29,7 +29,7 @@ export default function Guest() {
 
     const postPotluck = (potluck) => {
         axios
-            .get(`https://potluck-planner-tt104.herokuapp.com/potluck-items/`, potluck)
+            .get(`https://potluck-planner-tt104.herokuapp.com/potluck-guests/:id`, potluck)
             .then((response) => {
                 setCurrentPotluck([response.data, ...currentPotluck]);
                 console.log(response)
@@ -99,82 +99,84 @@ export default function Guest() {
 
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <div className="guest-page">
+                <form onSubmit={onSubmit}>
 
-                <div className="potluck-form-your-name" />
-                <label>
-                    Your Name:&nbsp;
+                    <div className="potluck-form-your-name" />
+                    <label>
+                        Your Name:&nbsp;
                     <input
-                        name="guestName"
-                        type="text"
-                        onChange={onInputChange}
-                        checked={formValues.guestName}
-                    />
-                </label>
+                            name="guestName"
+                            type="text"
+                            onChange={onInputChange}
+                            checked={formValues.guestName}
+                        />
+                    </label>
 
-                <h3>Will you be Attending</h3>
-                <div className="potluck-form-isGoing-yes" />
-                <label>
-                    Yes:&nbsp;
+                    <h3>Will you be Attending</h3>
+                    <div className="potluck-form-isGoing-yes" />
+                    <label>
+                        Yes:&nbsp;
                 <input
-                        name="isGoing"
-                        type="radio"
-                        value="yes"
-                        checked={true}
-                        className="form-check-input"
-                    />
-                </label>
+                            name="isGoing"
+                            type="radio"
+                            value="yes"
+                            checked={true}
+                            className="form-check-input"
+                        />
+                    </label>
 
-                <div className="potluck-form-isGoing-no" />
-                <label>
-                    No:&nbsp;
+                    <div className="potluck-form-isGoing-no" />
+                    <label>
+                        No:&nbsp;
                 <input
-                        name="isGoing"
-                        type="radio"
-                        value="no"
-                        checked={true}
-                        className="form-check-input"
-                    />
-                </label>
+                            name="isGoing"
+                            type="radio"
+                            value="no"
+                            checked={true}
+                            className="form-check-input"
+                        />
+                    </label>
 
-                <div className="potluck-form-numberOfGuests" />
-                <label>
-                    Total Guests:&nbsp;
+                    <div className="potluck-form-numberOfGuests" />
+                    <label>
+                        Total Guests:&nbsp;
                 <select name="numberOfGuests" value={formValues.numberOfGuests} onChange={onInputChange}>
-                        <option value="">Select Guests</option>
-                        <option value="one">1</option>
-                        <option value="two">2</option>
-                        <option value="three">3</option>
-                        <option value="four">4</option>
-                        <option value="five">5</option>
-                        <option value="six">6</option>
-                    </select>
-                </label>
+                            <option value="">Select Guests</option>
+                            <option value="one">1</option>
+                            <option value="two">2</option>
+                            <option value="three">3</option>
+                            <option value="four">4</option>
+                            <option value="five">5</option>
+                            <option value="six">6</option>
+                        </select>
+                    </label>
 
-                <div className="potluck-form-menu-checkbox" />
-                <label className="menu-checkbox">
-                    Select an item to bring:&nbsp;
+                    <div className="potluck-form-menu-checkbox" />
+                    <label className="menu-checkbox">
+                        Select an item to bring:&nbsp;
                     <input
-                        type="checkbox"
-                        name="foodList"
-                        checked={formValues.foodList}
-                        onChange={onCheckboxChange}
-                    />
-                    {formValues.foodList && formValues.foodList.map(foodList => (
-                        <div key={foodList} className="food-list">
-                            {foodList}
-                        </div>
-                    ))}
-                </label>
+                            type="checkbox"
+                            name="foodList"
+                            checked={formValues.foodList}
+                            onChange={onCheckboxChange}
+                        />
+                        {formValues.foodList && formValues.foodList.map(foodList => (
+                            <div key={foodList} className="food-list">
+                                {foodList}
+                            </div>
+                        ))}
+                    </label>
 
-                <div className="submit-button" />
-                <button disabled={disabled}>Submit</button>
-                <div className="errors">
-                    <div>{formErrors.guestName}</div>
-                    <div>{formErrors.isGoing}</div>
-                    <div>{formErrors.numberOfGuests}</div>
-                </div>
-            </form>
+                    <div className="submit-button" />
+                    <button disabled={disabled}>Submit</button>
+                    <div className="errors">
+                        <div>{formErrors.guestName}</div>
+                        <div>{formErrors.isGoing}</div>
+                        <div>{formErrors.numberOfGuests}</div>
+                    </div>
+                </form>
+            </div>
         </>
     )
 }

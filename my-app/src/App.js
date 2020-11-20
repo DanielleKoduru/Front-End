@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Route, Switch, Link, useHistory } from "react-router-dom";
 import "./App.css";
@@ -11,17 +12,16 @@ import { AddUser } from "./actions/userActions";
 const App = (props) => {
   console.log("App.js props:", props);
   const history = useHistory();
+  const [submited, setSubmitted] = useState(false);
 
   return (
     <>
-      {/* This is currently commented out so I can work on my home, guest, and organizer page. since the login and signup is password protected and not connected */}
       <Switch>
-        <div className="login-signUp">
-          <Route path="/loginForm">
-            <LoginForm />
-          </Route>
 
-          <Route path="/SignUp">
+        <div className='login-signUp'>
+          <Route exact path="/loginForm" render={() => <LoginForm {...props} />} />
+
+          <Route exact path="/SignUp">
             <SignUp />
           </Route>
         </div>
@@ -51,14 +51,12 @@ const App = (props) => {
           </button>
         </Route>
 
-        {/* comment out this switch when app is fully working */}
-        {/* <Switch> */}
-        <Route path="/Guest">
+        <Route exact path="/Guest">
           <h1> Upcoming Potluck's </h1>
           <Guest />
         </Route>
 
-        <Route path="/Form">
+        <Route exact path="/Form">
           <Form />
         </Route>
       </Switch>
