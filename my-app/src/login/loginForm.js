@@ -1,24 +1,26 @@
+
 import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import * as yup from 'yup';
 import loginSchema from './loginSchema';
 
+
 const initialLoginValues = {
-    username: '',
-    password: '',
+  email: "",
+  password: "",
 };
 
 const initialLoginErrors = {
-    username: '',
-    password: '',
-}
+  email: "",
+  password: "",
+};
 
-const initialUsers = []
-const initialDisabled = true
-
+//const initialUsers = []
+const initialDisabled = true;
 
 const LoginForm = () => {
+
     const [loginValues, setLoginValues] = useState(initialLoginValues);
     const [loginErrors, setLoginErrors] = useState(initialLoginErrors);
     const [disabledLogin, setDisabledLogin] = useState(initialDisabled);
@@ -134,6 +136,5 @@ const LoginForm = () => {
     )
 }
 
+
 export default LoginForm;
-
-

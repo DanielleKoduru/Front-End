@@ -4,23 +4,24 @@ import axios from 'axios';
 import * as yup from 'yup';
 import signUpSchema from './signUpSchema';
 
+
 const initialSignUpValues = {
-    username: '',
-    email: '',
-    password: '',
+  username: "",
+  email: "",
+  password: "",
 };
 
 const initialSignUpErrors = {
-    username: '',
-    email: '',
-    password: '',
-}
+  username: "",
+  email: "",
+  password: "",
+};
 
-const initialUsers = []
-const initialDisabled = true
-
+const initialUsers = [];
+const initialDisabled = true;
 
 const SignUp = () => {
+
     const [signUpValues, setSignUpValues] = useState(initialSignUpValues);
     const [signUpErrors, setSignUpErrors] = useState(initialSignUpErrors);
     const [disabledLogin, setDisabledLogin] = useState(initialDisabled);
@@ -148,5 +149,6 @@ const SignUp = () => {
         </form>
     )
 }
+
 
 export default SignUp;
